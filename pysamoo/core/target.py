@@ -133,6 +133,7 @@ class Target:
         obj = deepcopy(self.models[self.best])
 
         # get in and output
+        sols = sols.squeeze()
         X, y = sols.get("X"), self._get_y(sols)
         obj.fit(X, y)
 

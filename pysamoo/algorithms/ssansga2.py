@@ -2,7 +2,7 @@ from pymoo.algorithms.moo.nsga2 import NSGA2
 from pymoo.core.duplicate import DefaultDuplicateElimination
 from pymoo.core.population import Population
 from pymoo.optimize import minimize
-from pymoo.util.display import MultiObjectiveDisplay
+from pymoo.util.display.multi import MultiObjectiveOutput
 from pymoo.util.nds.non_dominated_sorting import NonDominatedSorting
 from pymoo.util.normalization import normalize
 from pymoo.util.roulette import RouletteWheelSelection
@@ -19,10 +19,10 @@ class SSANSGA2(SurrogateAssistedAlgorithm):
                  surr_n_gen=30,
                  surr_eps_elim=1e-6,
                  surr_sampling="current",
-                 display=MultiObjectiveDisplay(),
+                 output=MultiObjectiveOutput(),
                  **kwargs):
 
-        super().__init__(display=display, **kwargs)
+        super().__init__(output=output, **kwargs)
         self.n_infills = n_infills
         self.surr_n_gen = surr_n_gen
         self.surr_pop_size = surr_pop_size
