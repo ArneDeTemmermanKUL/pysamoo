@@ -57,7 +57,8 @@ class SSANSGA2(SurrogateAssistedAlgorithm):
                        verbose=False)
 
         cand = DefaultDuplicateElimination(epsilon=self.surr_eps_elim).do(res.pop, self.archive)
-
+        cand = res.pop #why TODO all are duplicates
+        
         if len(cand) <= self.n_infills:
             infills = Population.new(X=cand.get("X"))
 

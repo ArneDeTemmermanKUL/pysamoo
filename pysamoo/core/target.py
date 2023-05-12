@@ -118,7 +118,7 @@ class Target:
             v *= self.indicators[entry]["sign"]
 
             # find the best model or models - if there is a tie
-            models = models[v == np.min(v)]
+            models = models[v == np.nanmin(v)]
 
             if len(models) == 1:
                 break

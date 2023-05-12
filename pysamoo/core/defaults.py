@@ -1,6 +1,15 @@
 from ezmodel.core.factory import models_from_clazzes
 from ezmodel.models.kriging import Kriging
-from ezmodel.models.rbf import RBF
+from ezmodel.models.forest import *
+from ezmodel.models.svr import *
+# from ezmodel.models.idw import *
+from ezmodel.models.knn import *
+from ezmodel.models.regression import *
+from ezmodel.models.rbf import *
+from ezmodel.models.pysotrbf import *
+from ezmodel.models.mean import *
+
+
 from ezmodel.util.transformation.plog import Plog
 from pymoo.util.normalization import NoNormalization
 
@@ -15,12 +24,12 @@ def DEFAULT_OBJ_MODELS(**defaults):
         # GGP,
         # LGP,
         RBF,
-        # KNN,
+        KNN,
         # RBF3,
-        # PolynomialRegression,
+        PolynomialRegression,
         # RBF2,
         # pySOTRBF,
-        # SVR,
+        SVR,
         # InverseDistanceWeighting,
         # NearestNeighbors,
         **defaults)

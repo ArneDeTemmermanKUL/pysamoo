@@ -10,12 +10,12 @@ from pymoo.core.evaluator import Evaluator
 from pymoo.core.population import Population
 from pymoo.operators.sampling.lhs import LHS
 from pymoo.operators.selection.tournament import compare
-from pymoo.optimize import default_termination
-from pymoo.util.display import Display
+from pymoo.core.algorithm import default_termination
+from pymoo.util.display.display import Display
 from pymoo.util.dominator import get_relation
 from pymoo.util.misc import norm_eucl_dist, cdist
 from pymoo.util.optimum import filter_optimum
-from pymoo.util.termination.no_termination import NoTermination
+from pymoo.core.termination import NoTermination
 from pymoo.visualization.fitness_landscape import FitnessLandscape
 from pymoo.visualization.video.callback_video import AnimationCallback
 
@@ -155,7 +155,7 @@ class GPSAF(SurrogateAssistedAlgorithm):
             self.proto.termination = default_termination(problem)
 
         # setup the underlying algorithm
-        self.proto.setup(problem, seed=self.seed, **kwargs)
+        self.proto.setup(problem, **kwargs)
 
         # copy the algorithm object to get started
         self.algorithm = deepcopy(self.proto)
@@ -271,7 +271,8 @@ class GPSAF(SurrogateAssistedAlgorithm):
             infills = influenced
 
         # now copy over the infills and set them to have never been evaluated
-        ret = infills.copy(deep=True)
+
+        ret = deepcopy(infills)
         for e in ret:
             e.reset(data=False)
         ret.set("X", infills.get("X"), "created_by", infills)

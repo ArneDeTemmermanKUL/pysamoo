@@ -6,11 +6,11 @@ from pymoo.algorithms.moo.nsga2 import RankAndCrowdingSurvival
 from pymoo.algorithms.soo.nonconvex.ga import FitnessSurvival
 from pymoo.core.evaluator import Evaluator
 from pymoo.core.population import Population
-from pymoo.util.display import Display
+from pymoo.util.display.display import Display
 from pymoo.util.dominator import get_relation
 from pymoo.util.misc import norm_eucl_dist
 from pymoo.util.normalization import ZeroToOneNormalization
-from pymoo.util.termination.no_termination import NoTermination
+from pymoo.core.termination import NoTermination
 from pysamoo.core.algorithm import SurrogateAssistedAlgorithm
 from pysamoo.core.surrogate import Surrogate
 from pysamoo.core.target import Target
